@@ -1,0 +1,34 @@
+﻿
+<div ui-content-for="title">
+    <span>Bewertungen</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+
+            <h3 class="page-header">Bitte bewerten Sie Ihren Besuch bei Restaurant: <strong>{{location.name}}</strong></h3>
+            <div class="sidebar-block">                
+                <div class="form-group myRating">
+                    <div ng-repeat="rating in ratings" class="ratingContainer">
+                        <rate selrating="rating.rating" max="rating.max"></rate>
+                        <h3><b>&nbsp; {{rating.name}} : {{rating.rating}}</b></h3>
+                    </div>
+                </div>
+                <div class="form-group form-control-default">
+                    <label for="description">Beschreibung</label>
+                    <textarea id="description"
+                              data-ng-model="reviewDescription"
+                              placeholder="Ihre Bewertung hilft anderen Nutzern bei der Auswahl des richtigen Restaurants."
+                              class="form-control"
+                              rows="8"></textarea>
+                </div>
+            </div>
+            <div class="sidebar-block equal-padding">
+                <button type="submit" class="btn btn-primary" ng-click="rate()">Bewertung senden</button>
+                <button type="button" class="btn btn-default"><i class="fa fa-times fa-fw"></i> Abbrechen</button>
+            </div>
+
+        </div>
+    </div>
+</div>

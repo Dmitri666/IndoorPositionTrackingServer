@@ -1,0 +1,229 @@
+﻿/* CSS Document */
+/*@charset "utf-8";
+html, body {height: 100%; padding:0; margin:0;
+	font-family:Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:16px; line-height:20px; font-weight:300;
+}*/
+
+#topnavi {height:auto; width:auto; position:relative; background:#000; font-weight:500;}
+#topnavi ul {position:relative; padding:0; margin:0; width:auto; height:auto; display:inline;}
+#topnavi ul li {padding:0; margin:0; list-style-type:none; display:inline; float:left;}
+#topnavi ul li a {padding:0 20px; margin:0; width:auto; display:inline;}
+
+#topnavi ul li ol {position:absolute; top:0px; padding:10px 10px 0 10px; margin:0; z-index:11; width:100px; display:none;}
+_:-ms-input-placeholder, :root #topnavi ul li ol {position:absolute; top:50px; left:0px; padding:10px 10px 0 10px; margin:0; z-index:11; display:none;}
+
+#topnavi ul li:hover ol {display:inline; background:rgba(0,0,0,0.9); float:left;}
+#topnavi ul li ol li {padding:10px; margin:0; width:auto; float:left;}
+#topnavi ul li ol li img {padding:0; margin:0; opacity:0.7; display:block;}
+#topnavi img:hover {opacity:1; cursor:pointer;}
+
+#topnavi a:link, #topnavi a:visited {color:#fff; text-decoration:none;}
+#topnavi a:hover, #topnavi a:active {color:#5df; text-decoration:none;}
+#topnavi li.active a {color:#5df; text-decoration:none;}
+
+#bottomnavi {height:auto; width:auto; position:relative; color:#fff;
+	background: -webkit-linear-gradient(left, #336, #846, #336); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #336, #846, #336); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #336, #846, #336); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #336, #846, #336); /* Standard syntax */
+}
+#bottomnavi i {padding:0; margin:10px 10px 0 26px;}
+
+textarea.redaktor {padding:0; margin:0; display:block; resize:both; position:relative;
+	width:auto; min-width:451px; max-width:100%; height:auto; min-height:451px; 
+	background:#fff url(images/editor_bg_45.gif); border:0 none;
+}
+.tischgruppe {display:block; width:auto; min-width:58px; height:auto; min-height:58px;}
+
+.schattencontainer {position:absolute; display:block; 
+	padding:0; margin:0; width:auto; height:auto; display:block;	
+	-webkit-box-shadow: 1px 2px 5px 0px rgba(00, 00, 00, 0.1);
+    box-shadow: 1px 2px 5px 0px rgba(00, 00, 00, 0.1);	
+}
+.einzeltisch {width:44px; height:33px;}
+.doppeltisch {width:89px; height:33px;}
+.dreiertisch {width:134px; height:33px;}
+.vierertisch {width:179px; height:33px;}
+.sitztop, .sitzbottom {width:30px; height:3px;}
+.sitzright, .sitzleft {width:3px; height:30px;}
+
+.einzeltisch  {position:absolute; top:7px; left:7px;}
+.sitztop {position:absolute; top:0px; left:14px;}
+.sitzright {position:absolute; top:14px; right:0px;}
+.sitzbottom {position:absolute; bottom:0px; left:14px;}
+.sitzleft {position:absolute; top:14px; left:0px;}
+
+.tisch {padding:11px 0 0 0; margin:0;}
+.tisch, .sitz { 
+	width:100%; height:100%; display:block; text-align:center; color:#fff;	
+	background:#ade; border:1px solid #5cd; border-radius:2px;	
+	-webkit-box-shadow: inset 0px 0px 16px #5cd;
+	box-shadow: inset 0px 0px 16px #5cd;
+}
+.active .tisch, .active .sitz {
+	background:#fc0; border:1px solid #da0;
+	-webkit-box-shadow: inset 0px 0px 16px #da0;
+	box-shadow: inset 0px 0px 16px #da0;
+}
+
+.sessel {padding:0; margin:0; width:44px; height:44px; position:relative; display:block;
+	background:#edb; border:1px solid #dc8; border-radius:2px;	
+	-webkit-box-shadow: inset 0px 0px 16px #dc8;
+	box-shadow: inset 0px 0px 16px #dc8;
+}
+.sesselinner {padding:0; margin:14px 0 0 0; width:44px; height:30px; position:relative; display:block; 
+	background:#edb; border-top:1px solid #dc8;
+	-webkit-box-shadow: inset 0px 0px 10px #dc8;
+	box-shadow: inset 0px 0px 10px #dc8;
+}
+.sesselrechts {padding:0; margin:14px 0 0 0; width:30px; height:30px; position:relative; display:block; 
+	background:#edb; border-top:1px solid #dc8; border-right:1px solid #dc8; border-top-right-radius:4px;
+	-webkit-box-shadow: inset 0px 0px 10px #dc8;
+	box-shadow: inset 0px 0px 10px #dc8;
+}
+.sessellinks {padding:0; margin:14px 0 0 14px; width:30px; height:30px; position:relative; display:block; 
+	background:#edb; border-top:1px solid #dc8; border-left:1px solid #dc8; border-top-left-radius:4px;
+	-webkit-box-shadow: inset 0px 0px 10px #dc8;
+	box-shadow: inset 0px 0px 10px #dc8;
+}
+.theke {position:relative; display:block; text-align:center; color:#8df;
+	padding:33px 0 0 0; margin:0; width:89px; height:56px; display:block;
+	background:#fff; border:1px solid #bdf; border-radius:2px;	
+	-webkit-box-shadow: inset 0px 0px 16px #acf;
+	box-shadow: inset 0px 0px 16px #acf;
+}
+.rotation180 {
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.gloo {color:#2cf;}
+.rosa {color:#ddf;}
+.green {color:#ad0;}
+.sun {color:#fc0;}
+
+/*.clear {clear:both;}*/
+
+/*h1, h2, h3, h4 {text-align:center; width:100%; display:block;}
+table, tr, td {padding:0; margin:0; border-collapse:collapse; position:relative; width:auto; max-width:100%; display:block;}*/
+/*.theke p, .tisch p {padding:0; margin:0; font-weight:400; display:block;}*/
+
+/*///////////////// MANUAL POSITIONS /////////////////*/
+
+/*#tisch1 {position:absolute; top:38px; left:38px;}
+#tisch2 {position:absolute; top:128px; left:83px;}
+#tisch3 {position:absolute; top:200px; left:225px;}
+
+#couch1 {position:absolute; top:145px; left:200px;}
+#couch2 {position:absolute; top:145px; left:246px;}
+#couch3 {position:absolute; top:145px; left:292px;}
+#couch4 {position:absolute; top:145px; left:336px;}
+
+#sofa1 {position:absolute; top:302px; left:340px;}
+#sofal {position:absolute; top:0px; left:0px;}
+#sofar {position:absolute; top:0px; left:46px;}
+
+#theke1 {position:absolute; top:270px; left:45px;}*/
+
+
+.fa-search-plus:hover {
+    color: red;
+}
+
+.fa-search-minus:hover {
+    color: red;
+}
+
+.fa-trash-o:hover {
+    color: red;
+}
+
+.fa-undo:hover {
+    color: red;
+}
+
+.fa-paper-plane-o:hover {
+    color: red;
+}
+
+.fa-floppy-o:hover {
+    color: red;
+}
+
+.fa-repeat:hover {
+    color: red;
+}
+
+@media screen and (max-width: 320px) {
+    .fa-search-plus {
+        font-size: 1em !important;
+    }
+    .fa-search-minus {
+        font-size: 1em !important;
+    }
+    .fa-trash-o {
+        font-size: 1em !important;
+    }
+    .fa-undo {
+        font-size: 1em !important;
+    }
+    .fa-paper-plane-o {
+        font-size: 1em !important;
+    }
+    .fa-floppy-o {
+        font-size: 1em !important;
+    }
+    .fa-repeat {
+        font-size: 1em !important;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 799px) {
+    .fa-search-plus {
+        font-size: 2em !important;
+    }
+    .fa-search-minus {
+        font-size: 2em !important;
+    }
+    .fa-trash-o {
+        font-size: 2em !important;
+    }
+    .fa-undo {
+        font-size: 2em !important;
+    }
+    .fa-paper-plane-o {
+        font-size: 2em !important;
+    }
+    .fa-floppy-o {
+        font-size: 2em !important;
+    }
+    .fa-repeat {
+        font-size: 2em !important;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .fa-search-plus {
+        font-size: 4em !important;
+    }
+    .fa-search-minus {
+        font-size: 4em !important;
+    }
+    .fa-trash-o {
+        font-size: 4em !important;
+    }
+    .fa-undo {
+        font-size: 4em !important;
+    }
+    .fa-paper-plane-o {
+        font-size: 4em !important;
+    }
+    .fa-floppy-o {
+        font-size: 4em !important;
+    }
+    .fa-repeat {
+        font-size: 4em !important;
+    }
+}

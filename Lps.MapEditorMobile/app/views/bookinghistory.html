@@ -1,0 +1,52 @@
+﻿<style>
+    .mediacustom {
+        padding: 4px;
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Ihre Reservierungen</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <!--<h3 class="page-header">Ihre Reservierungen</h3>-->
+            <div class="media" ng-repeat="booking in bookingHistoryList | orderBy: 'createTime' : true  ">
+                <div class="media-body">
+                    <div class="pull-left mediacustom">
+                        <a href="#/location/{{booking.roomId}}">
+                            <img ng-src="{{imagePath(booking.mainPhoto, IMAGE_SIZE.thumb)}}" height="90" width="120" class="media-object">
+                        </a>
+                    </div>                    
+                    <a href="#/location/{{booking.roomId}}">
+                        <h4 class="media-heading" ng-bind="booking.name"></h4>
+                    </a>
+                    <p><b>Time:</b> {{booking.time}}  <b>People:</b> {{booking.peopleCount}} </p>                    
+                    <p>
+                        <b>Tables:</b>
+                        <span ng-repeat="table in booking.roomTableDataList">
+                            <span class="btn btn-success">{{table.description}}</span>&nbsp; &nbsp;
+                        </span>                        
+                    </p>
+                </div>
+                <div class="media-right" ng-switch on="booking.state">
+                    <div ng-switch-when="0" style="display:inline-block;width:100px;">
+                        <button class="btn btn-md" ng-click="stornoBooking(booking)"><i class="fa fa-adjust fa-4x"></i><div>Stornieren</div></button>
+                    </div>
+                    <div ng-switch-when="1">
+                        <a href="#/rating/{{booking.roomId}}">
+                            <div class="btn btn-md"><i class="fa fa-hand-o-up fa-4x"></i><div>Bewerten</div></div>
+                        </a>
+                    </div>
+                    <div ng-switch-when="2">
+                        <div class="btn btn-md"><i class="fa fa-certificate fa-4x"></i><div>Storniert-2</div></div>
+                    </div>
+                    <div ng-switch-when="3">
+                        <div class="btn btn-md"><i class="fa fa-bitbucket fa-4x"></i><div>Cancel-3</div></div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

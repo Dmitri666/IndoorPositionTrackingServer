@@ -1,0 +1,62 @@
+{
+  "name": "Gloobar_WebUI",
+  "version": "0.0.1",
+  "authors": [
+    ""
+  ],
+  "description": "Gloobar Web Frontend",
+  "main": "index.html",
+  "license": "commercial",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "1.4.9",
+    "angular-bootstrap": "*",
+    "angular-deckgrid": "~0.5.0",
+    "angular-filter": "*",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.6.0",
+    "angular-i18n": "~1.4.3",
+    "angular-local-storage": "~0.2.3",
+    "angular-resource": "~1.4.0",
+    "angular-route": "~1.4.8",
+    "angular-sanitize": "~1.4.0",
+    "angular-signalr-hub": "~1.5.0",
+    "bootstrap": "*",    
+    "bootstrap-markdown": "~2.9.0",
+    "bootstrap-touchspin": "*",
+    "fabric": "*",
+    "font-awesome": "*",
+    "glyphicons-halflings": "*",
+    "google-maps-utility-library-v3": "*",
+    "jqueri-ui": "*",
+    "jquery": "*",
+    "jquery-nicescroll": "*",
+    "jspdf": "~1.1.135",
+    "material-design-iconic-font": "*",
+    "ng-currency": "~0.8.12",
+    "ng-file-upload": "~3.3.2",
+    "ngmap": "*",
+    "ngstorage": "*",    
+    "victor": "1.1.0",
+    "typeahead.js": "*",
+    "mobile-angular-ui": "*",
+    "angularjs-slider": "*",
+    "angular-responsive-tables": "*",
+    "toaster": "*",
+    "angular-file-upload": "*"  
+
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0"
+  },
+  "resolutions": {
+    "angular": "1.4.9"
+  }
+}

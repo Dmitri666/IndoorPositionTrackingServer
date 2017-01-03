@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LpsServer", "LpsServer\LpsServer.csproj", "{D7D1F1CB-D904-424D-B6E9-46E72E0A51E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LpsServer.Data", "LpsServer.Data\LpsServer.Data.csproj", "{09A87C17-497D-41F4-9D66-BB7C443909E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4EC13998-17D0-4D92-9F26-B2C05866F467}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lps.Contracts", "Lps.Contracts\Lps.Contracts.csproj", "{5E77270C-39B6-4C99-893A-9F68DFA8B78C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lps.Services", "Lps.Services\Lps.Services.csproj", "{3C9D9B23-5681-49CA-B19C-9CF65646DD1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lps.MapEditorMobile", "Lps.MapEditorMobile\Lps.MapEditorMobile.csproj", "{5905E883-89A6-40BD-AC66-D231D860AA34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7D1F1CB-D904-424D-B6E9-46E72E0A51E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D1F1CB-D904-424D-B6E9-46E72E0A51E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D1F1CB-D904-424D-B6E9-46E72E0A51E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D1F1CB-D904-424D-B6E9-46E72E0A51E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09A87C17-497D-41F4-9D66-BB7C443909E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A87C17-497D-41F4-9D66-BB7C443909E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A87C17-497D-41F4-9D66-BB7C443909E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09A87C17-497D-41F4-9D66-BB7C443909E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E77270C-39B6-4C99-893A-9F68DFA8B78C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E77270C-39B6-4C99-893A-9F68DFA8B78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E77270C-39B6-4C99-893A-9F68DFA8B78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E77270C-39B6-4C99-893A-9F68DFA8B78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9D9B23-5681-49CA-B19C-9CF65646DD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9D9B23-5681-49CA-B19C-9CF65646DD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9D9B23-5681-49CA-B19C-9CF65646DD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9D9B23-5681-49CA-B19C-9CF65646DD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5905E883-89A6-40BD-AC66-D231D860AA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5905E883-89A6-40BD-AC66-D231D860AA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5905E883-89A6-40BD-AC66-D231D860AA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5905E883-89A6-40BD-AC66-D231D860AA34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

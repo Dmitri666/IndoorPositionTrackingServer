@@ -1,0 +1,290 @@
+﻿
+<style>
+    .progress {
+        height: 3em;
+
+        i { line-height: 3.5em; }
+    }
+
+    .progress-bar {
+        transition: width 1s ease-in-out;
+    }
+</style>
+
+
+<div ui-content-for="title">
+    <span>Profile</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+
+            <ui-state id='activeTab' default='1'></ui-state>
+            <div class="btn-group justified nav-tabs">
+                <a ui-set="{'activeTab': 1}"
+                   ui-class="{'active': activeTab == 1}" class="btn btn-default"><i class="fa fa-user"></i>Profile</a>
+                <a ui-set="{'activeTab': 2}"
+                   ui-class="{'active': activeTab == 2}" class="btn btn-default"><i class="fa fa-credit-card"></i>Payment</a>
+            </div>
+
+            <div ui-if="activeTab == 1">
+                <div class="col-md-12">
+                   
+                    <h3 class="page-header">Photos</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ng-gallery image-list="profile.photos" isadmin="true">
+                            </ng-gallery>
+                        </div>
+                    </div>
+                    <br />
+                   
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Name</th>
+                                <th ng-show="uploader.isHTML5">Size</th>
+                                <th ng-show="uploader.isHTML5">Progress</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in uploader.queue">
+                                <td><strong>{{ item.file.name }}</strong></td>
+                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                <td ng-show="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>
+                                <td nowrap>
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <div>
+                            Progress:
+                            <div class="progress" style="">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                            </div>
+                        </div>                                               
+                        <label class="btn btn-default btn-file">
+                            Browse 
+                            <input type="file" style="display: none;" id="image"  nv-file-select="" uploader="uploader" />
+                        </label>                        
+                        <!--<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                        </button>
+                        <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                            <span class="glyphicon glyphicon-trash"></span> Remove all
+                        </button>-->
+                    </div>
+
+                    <br />
+                    <form action="#">
+                        <!--<h3 class="page-header">Ihr Profil</h3>-->
+                        <div class="sidebar-block">
+                            <h3 class="page-header">Personal info</h3>
+                            <div class="form-group form-control-default required">
+                                <label for="title">Vorname</label>
+                                <input type="text" ng-model="profile.userName" placeholder="Vorname" class="form-control" id="title" />
+                            </div>
+                            <div class="form-group form-control-default required">
+                                <label for="description">Nachname</label>
+                                <input type="text" ng-model="profile.userName" placeholder="Nachname" class="form-control" id="description" />
+                            </div>
+                            <div class="form-group form-control-default required">
+                                <label for="description">Company</label>
+                                <input type="text" ng-model="profile.company" placeholder="Company" class="form-control" id="description" />
+                            </div>
+                            <div class="form-group form-control-default required">
+                                <label for="description">Email</label>
+                                <input type="text" ng-model="profile.email" placeholder="Email" class="form-control" id="description" />
+                            </div>
+                        </div>
+                        <div class="sidebar-block equal-padding">
+                            <button type="submit" class="btn btn-primary" ng-click="save()">Speichern</button>
+                            <button type="button" class="btn btn-default"><i class="fa fa-times fa-fw"></i> Abbrechen</button>
+                        </div>
+                        <br />
+                        <div class="sidebar-block">
+                            <h3 class="page-header">Passwort ändern</h3>
+                            <div class="form-group form-control-default required">
+                                <label for="description">Neues Passwort</label>
+                                <input type="text" ng-model="profile.password" placeholder="Neues Passwort" class="form-control" id="description" />
+                            </div>
+                            <div class="form-group form-control-default required">
+                                <label for="description">Passwort bestätigen</label>
+                                <input type="text" ng-model="profile.password" placeholder="Passwort bestätigen" class="form-control" id="description" />
+                            </div>
+                        </div>
+                        <div class="sidebar-block equal-padding">
+                            <button type="submit" class="btn btn-primary" ng-click="save()">Speichern</button>
+                            <button type="button" class="btn btn-default"><i class="fa fa-times fa-fw"></i> Abbrechen</button>
+                        </div>
+                        <br />
+                    </form>
+                </div>
+            </div>
+
+            <div ui-if="activeTab == 2">
+                <div class="col-md-12">
+                    <h3 class="page-header">Payment information</h3>
+                    <div class="row panel">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <form class="form-horizontal" id="myForm">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Card Holder's Name
+                                            </label>
+                                            <div class="controls">
+                                                <input type="text" name="name" class="form-control" pattern="\w+ \w+.*" title="Fill your first and last name" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div class="controls">
+                                                <div class="row">
+                                                    <div class="col-sm-8 col-xs-8 col-md-8">
+                                                        <label class="control-label">
+                                                            Card Number
+                                                        </label>
+                                                        <input id="card_number" name="card_number" type="text" placeholder="Card Number" class="form-control input-md">
+
+                                                    </div>
+                                                    <div class="col-sm-4 col-xs-4 col-md-4">
+                                                        <label class="control-label">
+                                                            Card CVV
+                                                        </label>
+                                                        <input type="text" name="security_code" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required="">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="controls">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-xs-6 col-md-6">
+                                                        <label class="control-label">
+                                                            Card Expiry Month
+                                                        </label>
+                                                        <select id="expirymonth" name="expirymonth" class="form-control">
+                                                            <option value="01">
+                                                                january
+                                                            </option>
+                                                            <option value="02">
+                                                                february
+                                                            </option>
+                                                            <option value="03">
+                                                                march
+                                                            </option>
+                                                            <option value="04">
+                                                                April
+                                                            </option>
+                                                            <option value="05">
+                                                                May
+                                                            </option>
+                                                            <option value="06">
+                                                                June
+                                                            </option>
+                                                            <option value="07">
+                                                                July
+                                                            </option>
+                                                            <option value="08">
+                                                                August
+                                                            </option>
+                                                            <option value="09">
+                                                                September
+                                                            </option>
+                                                            <option value="10">
+                                                                October
+                                                            </option>
+                                                            <option value="11">
+                                                                November
+                                                            </option>
+                                                            <option value="12">
+                                                                December
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="col-sm-6 col-xs-6 col-md-6">
+                                                        <label class="control-label">
+                                                            Card Expiry Year
+                                                        </label>
+                                                        <input id="expiryyear" name="expiryyear" type="text" placeholder="Year eg 2014" class="form-control input-md" required="">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-xs-6 col-md-6">
+                                                        <label class="control-label">
+                                                            Address
+                                                        </label>
+                                                        <input name="address1" type="text" class="form-control" required="">
+                                                        <input id="hidden_paymentid" name="account_number" type="hidden" value="">
+                                                        <input name="cash_amount" id="hiddencashamount" type="hidden" value="">
+                                                    </div>
+                                                    <div class="col-sm-6 col-xs-6 col-md-6">
+                                                        <label class="control-label">
+                                                            ZIP
+                                                        </label>
+                                                        <input type="text" name="zip" class="form-control" autocomplete="off" required="">
+                                                    </div>
+                                                    <div class="col-sm-6 col-xs-6 col-md-6">
+                                                        <label class="control-label">
+                                                            State/Province
+                                                        </label>
+                                                        <input type="text" name="state" class="form-control" autocomplete="off" required="">
+                                                    </div>
+                                                    <div class="col-sm-6 col-xs-6 col-md-6">
+                                                        <label class="control-label">
+                                                            Country
+                                                        </label>
+                                                        <input type="text" class="form-control" autocomplete="off" name="country" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" ng-click="creditCardSave()">Speichern</button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-times fa-fw"></i> Abbrechen</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

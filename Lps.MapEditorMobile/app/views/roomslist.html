@@ -1,0 +1,52 @@
+﻿<style>
+    .mediacustom {
+        padding: 4px;
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Ihre Restaurante</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <h3 class="page-header">Hier können Sie Ihr Restaurant erstellen.</h3>
+            <div class="row">
+                <div class="col-xs-8">                
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-block btn-success" data-ng-click="newRoom()"> Add Room</button>
+                </div>
+            </div>
+            <div class="media" ng-repeat="room in roomsList | orderBy: 'time' : true ">
+                <div class="media-body">
+                    <div class="pull-left mediacustom">
+                        <a href="#/registration/{{room.id}}">
+                            <img ng-src="{{imagePath(room.mainPhoto, IMAGE_SIZE.thumb)}}" height="90" width="120" class="media-object">
+                        </a>
+                    </div>
+                    <a href="#/registration/{{room.id}}">
+                        <h4 ng-bind="room.name"></h4>
+                    </a>
+                    <p class="media-heading" ng-bind="room.name"></p>
+                    <p ng-bind="room.number"></p>
+                </div>
+                <!--<div class="media-right">
+                    <a href="#/roomnew/{{room.id}}">
+                        <div class="btn btn-lg">
+                            <i class="fa fa-edit fa-2x"></i><div> Room </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="media-right element-invisible">
+                    <a href="#/businesshours/{{room.id}}">
+                        <div class="btn btn-lg btn-success">
+                            <i class="fa fa-calendar fa-2x"></i><div>Calendar</div>
+                        </div>
+                    </a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

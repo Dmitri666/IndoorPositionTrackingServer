@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5905E883-89A6-40BD-AC66-D231D860AA34}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lps.MapEditorMobile</RootNamespace>
+    <AssemblyName>Lps.MapEditorMobile</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\controllers\associateController.js" />
+    <Content Include="app\controllers\bookatableController.js" />
+    <Content Include="app\controllers\bookinghistoryController.js" />
+    <Content Include="app\controllers\businessHoursController.js" />
+    <Content Include="app\controllers\fabricEditorController.js" />
+    <Content Include="app\controllers\favoriteController.js" />
+    <Content Include="app\controllers\beaconInRoomController.js" />
+    <Content Include="app\controllers\statisticsController.js" />
+    <Content Include="app\controllers\helpController.js" />
+    <Content Include="app\controllers\profileController.js" />
+    <Content Include="app\controllers\ratingController.js" />
+    <Content Include="app\controllers\kassaController.js" />
+    <Content Include="app\controllers\registrationController.js" />
+    <Content Include="app\controllers\tryRoomController.js" />
+    <Content Include="app\controllers\roomEditorController.js" />
+    <Content Include="app\controllers\roomslistController.js" />
+    <Content Include="app\controllers\searchController.js" />
+    <Content Include="app\directives\backImg.js" />
+    <Content Include="app\directives\datepicker.js" />
+    <Content Include="app\directives\canvasEditor.js" />
+    <Content Include="app\directives\draggable.js" />
+    <Content Include="app\directives\ngGallery.js" />
+    <Content Include="app\directives\processSteps.js" />
+    <Content Include="app\directives\specializationSearch.js" />
+    <Content Include="app\directives\reservationWidget.js" />
+    <Content Include="app\directives\psDatetimePicker.js" />
+    <Content Include="app\directives\profileMenu.js" />
+    <Content Include="app\directives\rating.js" />
+    <Content Include="app\directives\scrollable.js" />
+    <Content Include="app\directives\sfTypeahead.js" />
+    <Content Include="app\directives\svgImage.js" />
+    <Content Include="app\directives\timepicker.js" />
+    <Content Include="app\directives\gridalicious.js" />
+    <Content Include="app\directives\toggle-panel-collapse.js" />
+    <Content Include="app\directives\touch-spin.js" />
+    <Content Include="app\directives\treeView.js" />
+    <Content Include="app\services\adminService.js" />
+    <Content Include="app\services\codelistResolver.js" />
+    <Content Include="app\services\favoriteService.js" />
+    <Content Include="app\services\hubService.js" />
+    <Content Include="app\services\mapService.js" />
+    <Content Include="app\services\config.js" />
+    <Content Include="app\services\filesUploadService.js" />
+    <Content Include="app\services\modalService.js" />
+    <Content Include="app\services\profileService.js" />
+    <Content Include="app\services\ratingService.js" />
+    <Content Include="app\services\itemFactoryService.js" />
+    <Content Include="app\services\roomModelService.js" />
+    <Content Include="app\services\roomService.js" />
+    <Content Include="app\services\bookingService.js" />
+    <Content Include="app\views\associate.html" />
+    <Content Include="app\views\bookatable.html" />
+    <Content Include="app\views\bookinghistory.html" />
+    <Content Include="app\views\businesshours.html" />
+    <Content Include="app\views\datepicker.html" />
+    <Content Include="app\views\day.html" />
+    <Content Include="app\views\month.html" />
+    <Content Include="app\views\reservationWidget.html" />
+    <Content Include="app\views\fabricCanvas.html" />
+    <Content Include="app\views\favorite.html" />
+    <Content Include="app\views\beaconInRoom.html" />
+    <Content Include="app\views\statistics.html" />
+    <Content Include="app\views\kassaList.html" />
+    <Content Include="app\views\help.html" />
+    <Content Include="app\views\profile.html" />
+    <Content Include="app\views\rating.html" />
+    <Content Include="app\views\kassa.html" />
+    <Content Include="app\views\registration.html" />
+    <Content Include="app\views\tryroom.html" />
+    <Content Include="app\views\roomnew.html" />
+    <Content Include="app\views\roomslist.html" />
+    <Content Include="app\views\search.html" />
+    <Content Include="app\views\sidebar.html" />
+    <Content Include="app\views\sidebarRight.html" />
+    <Content Include="app\views\unauthorizedAccess.html" />
+    <Content Include="app\views\year.html" />
+    <Content Include="authComplete.html" />
+    <Content Include="content\css\editor\editor.css" />
+    <Content Include="content\css\gloobar.css" />
+    <Content Include="content\css\maps.css" />
+    <Content Include="content\css\ngGallery.css" />
+    <Content Include="content\css\treeView.css" />
+    <Content Include="content\css\typeahead.css" />
+    <Content Include="content\fonts\picto-foundry-arrows.svg" />
+    <Content Include="content\fonts\picto-foundry-clothing.svg" />
+    <Content Include="content\fonts\picto-foundry-emotions.svg" />
+    <Content Include="content\fonts\picto-foundry-food.svg" />
+    <Content Include="content\fonts\picto-foundry-general.svg" />
+    <Content Include="content\fonts\picto-foundry-household.svg" />
+    <Content Include="content\fonts\picto-foundry-medical-science.svg" />
+    <Content Include="content\fonts\picto-foundry-multimedia.svg" />
+    <Content Include="content\fonts\picto-foundry-nature.svg" />
+    <Content Include="content\fonts\picto-foundry-shopping-finance.svg" />
+    <Content Include="content\fonts\picto-foundry-sports.svg" />
+    <Content Include="content\fonts\picto-foundry-vehicle-navigation.svg" />
+    <Content Include="content\fonts\picto-foundry-weather.svg" />
+    <Content Include="content\icons\car.png" />
+    <Content Include="content\icons\child.png" />
+    <Content Include="content\icons\editor\beacon.png" />
+    <Content Include="content\icons\editor\dreieck.png" />
+    <Content Include="content\icons\editor\eckpunkt.png" />
+    <Content Include="content\icons\editor\editor_bg_45.gif" />
+    <Content Include="content\icons\editor\fenster.png" />
+    <Content Include="content\icons\editor\kreis.png" />
+    <Content Include="content\icons\editor\tisch.png" />
+    <Content Include="content\icons\editor\treppe.png" />
+    <Content Include="content\icons\editor\tuer.png" />
+    <Content Include="content\icons\female.png" />
+    <Content Include="content\icons\male.png" />
+    <Content Include="content\icons\marker.png" />
+    <Content Include="gulpfile.js" />
+    <Content Include="images\elements\beacon.png" />
+    <Content Include="images\elements\circle.png" />
+    <Content Include="images\elements\door.png" />
+    <Content Include="images\elements\dot.png" />
+    <Content Include="images\elements\floor.png" />
+    <Content Include="images\elements\line.png" />
+    <Content Include="images\elements\rect.png" />
+    <Content Include="images\elements\window.png" />
+    <Content Include="images\furniture\sessel.png" />
+    <Content Include="images\furniture\sofa1.png" />
+    <Content Include="images\furniture\sofa2.png" />
+    <Content Include="images\furniture\sofa3.png" />
+    <Content Include="images\furniture\sofa4.png" />
+    <Content Include="images\furniture\table.png" />
+    <Content Include="images\furniture\table1.png" />
+    <Content Include="images\furniture\table2.png" />
+    <Content Include="images\furniture\table2vs.png" />
+    <Content Include="images\furniture\table3.png" />
+    <Content Include="images\furniture\table4.png" />
+    <Content Include="images\markers\bar-01.png" />
+    <Content Include="images\markers\bar-02.png" />
+    <Content Include="images\markers\bar-03.png" />
+    <Content Include="images\markers\bar-04.png" />
+    <Content Include="images\markers\bar-05.png" />
+    <Content Include="images\markers\bar-06.png" />
+    <Content Include="images\markers\bar-07.png" />
+    <Content Include="images\markers\bar-08.png" />
+    <Content Include="images\markers\bar-09.png" />
+    <Content Include="images\markers\bar-10.png" />
+    <Content Include="images\markers\building-01.png" />
+    <Content Include="images\markers\building-02.png" />
+    <Content Include="images\markers\building-03.png" />
+    <Content Include="images\markers\building-04.png" />
+    <Content Include="images\markers\building-05.png" />
+    <Content Include="images\markers\building-06.png" />
+    <Content Include="images\markers\building-07.png" />
+    <Content Include="images\markers\building-08.png" />
+    <Content Include="images\markers\building-09.png" />
+    <Content Include="images\markers\building-10.png" />
+    <Content Include="images\markers\event-01.png" />
+    <Content Include="images\markers\event-02.png" />
+    <Content Include="images\markers\event-03.png" />
+    <Content Include="images\markers\event-04.png" />
+    <Content Include="images\markers\event-05.png" />
+    <Content Include="images\markers\event-06.png" />
+    <Content Include="images\markers\event-07.png" />
+    <Content Include="images\markers\event-08.png" />
+    <Content Include="images\markers\event-09.png" />
+    <Content Include="images\markers\event-10.png" />
+    <Content Include="images\markers\gas-01.png" />
+    <Content Include="images\markers\gas-02.png" />
+    <Content Include="images\markers\gas-03.png" />
+    <Content Include="images\markers\gas-04.png" />
+    <Content Include="images\markers\gas-05.png" />
+    <Content Include="images\markers\gas-06.png" />
+    <Content Include="images\markers\gas-07.png" />
+    <Content Include="images\markers\gas-08.png" />
+    <Content Include="images\markers\gas-09.png" />
+    <Content Include="images\markers\gas-10.png" />
+    <Content Include="images\markers\house-01.png" />
+    <Content Include="images\markers\house-02.png" />
+    <Content Include="images\markers\house-03.png" />
+    <Content Include="images\markers\house-04.png" />
+    <Content Include="images\markers\house-05.png" />
+    <Content Include="images\markers\house-06.png" />
+    <Content Include="images\markers\house-07.png" />
+    <Content Include="images\markers\house-08.png" />
+    <Content Include="images\markers\house-09.png" />
+    <Content Include="images\markers\house-10.png" />
+    <Content Include="images\markers\marker.png" />
+    <Content Include="images\markers\restaurant-01.png" />
+    <Content Include="images\markers\restaurant-02.png" />
+    <Content Include="images\markers\restaurant-03.png" />
+    <Content Include="images\markers\restaurant-04.png" />
+    <Content Include="images\markers\restaurant-05.png" />
+    <Content Include="images\markers\restaurant-06.png" />
+    <Content Include="images\markers\restaurant-07.png" />
+    <Content Include="images\markers\restaurant-08.png" />
+    <Content Include="images\markers\restaurant-09.png" />
+    <Content Include="images\markers\restaurant-10.png" />
+    <Content Include="images\markers\taxi-01.png" />
+    <Content Include="images\markers\taxi-02.png" />
+    <Content Include="images\markers\taxi-03.png" />
+    <Content Include="images\markers\taxi-04.png" />
+    <Content Include="images\markers\taxi-05.png" />
+    <Content Include="images\markers\taxi-06.png" />
+    <Content Include="images\markers\taxi-07.png" />
+    <Content Include="images\markers\taxi-08.png" />
+    <Content Include="images\markers\taxi-09.png" />
+    <Content Include="images\markers\taxi-10.png" />
+    <Content Include="images\markers\user-01.png" />
+    <Content Include="images\markers\user-02.png" />
+    <Content Include="images\markers\user-03.png" />
+    <Content Include="images\markers\user-04.png" />
+    <Content Include="images\markers\user-05.png" />
+    <Content Include="images\markers\user-06.png" />
+    <Content Include="images\markers\user-07.png" />
+    <Content Include="images\markers\user-08.png" />
+    <Content Include="images\markers\user-09.png" />
+    <Content Include="images\markers\user-10.png" />
+    <Content Include="images\shapes\room1.png" />
+    <Content Include="images\shapes\room10.png" />
+    <Content Include="images\shapes\room11.png" />
+    <Content Include="images\shapes\room12.png" />
+    <Content Include="images\shapes\room13.png" />
+    <Content Include="images\shapes\room14.png" />
+    <Content Include="images\shapes\room15.png" />
+    <Content Include="images\shapes\room2.png" />
+    <Content Include="images\shapes\room3.png" />
+    <Content Include="images\shapes\room4.png" />
+    <Content Include="images\shapes\room5.png" />
+    <Content Include="images\shapes\room6.png" />
+    <Content Include="images\shapes\room7.png" />
+    <Content Include="images\shapes\room8.png" />
+    <Content Include="images\shapes\room9.png" />
+    <Content Include="index.html" />
+    <Content Include="readme.txt" />
+    <Content Include="package.json" />
+    <Content Include="bower.json" />
+    <Content Include="content\fonts\picto-foundry-arrows.eot" />
+    <Content Include="content\fonts\picto-foundry-arrows.ttf" />
+    <Content Include="content\fonts\picto-foundry-arrows.woff" />
+    <Content Include="content\fonts\picto-foundry-clothing.eot" />
+    <Content Include="content\fonts\picto-foundry-clothing.ttf" />
+    <Content Include="content\fonts\picto-foundry-clothing.woff" />
+    <Content Include="content\fonts\picto-foundry-emotions.eot" />
+    <Content Include="content\fonts\picto-foundry-emotions.ttf" />
+    <Content Include="content\fonts\picto-foundry-emotions.woff" />
+    <Content Include="content\fonts\picto-foundry-food.eot" />
+    <Content Include="content\fonts\picto-foundry-food.ttf" />
+    <Content Include="content\fonts\picto-foundry-food.woff" />
+    <Content Include="content\fonts\picto-foundry-general.eot" />
+    <Content Include="content\fonts\picto-foundry-general.ttf" />
+    <Content Include="content\fonts\picto-foundry-general.woff" />
+    <Content Include="content\fonts\picto-foundry-household.eot" />
+    <Content Include="content\fonts\picto-foundry-household.ttf" />
+    <Content Include="content\fonts\picto-foundry-household.woff" />
+    <Content Include="content\fonts\picto-foundry-medical-science.eot" />
+    <Content Include="content\fonts\picto-foundry-medical-science.ttf" />
+    <Content Include="content\fonts\picto-foundry-medical-science.woff" />
+    <Content Include="content\fonts\picto-foundry-multimedia.eot" />
+    <Content Include="content\fonts\picto-foundry-multimedia.ttf" />
+    <Content Include="content\fonts\picto-foundry-multimedia.woff" />
+    <Content Include="content\fonts\picto-foundry-nature.eot" />
+    <Content Include="content\fonts\picto-foundry-nature.ttf" />
+    <Content Include="content\fonts\picto-foundry-nature.woff" />
+    <Content Include="content\fonts\picto-foundry-shopping-finance.eot" />
+    <Content Include="content\fonts\picto-foundry-shopping-finance.ttf" />
+    <Content Include="content\fonts\picto-foundry-shopping-finance.woff" />
+    <Content Include="content\fonts\picto-foundry-sports.eot" />
+    <Content Include="content\fonts\picto-foundry-sports.ttf" />
+    <Content Include="content\fonts\picto-foundry-sports.woff" />
+    <Content Include="content\fonts\picto-foundry-vehicle-navigation.eot" />
+    <Content Include="content\fonts\picto-foundry-vehicle-navigation.ttf" />
+    <Content Include="content\fonts\picto-foundry-vehicle-navigation.woff" />
+    <Content Include="content\fonts\picto-foundry-weather.eot" />
+    <Content Include="content\fonts\picto-foundry-weather.ttf" />
+    <Content Include="content\fonts\picto-foundry-weather.woff" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\homeController.js" />
+    <Content Include="app\controllers\indexController.js" />
+    <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\controllers\locationController.js" />
+    <Content Include="app\controllers\signupController.js" />
+    <Content Include="app\controllers\tokensManagerController.js" />
+    <Content Include="app\services\authInterceptorService.js" />
+    <Content Include="app\services\authService.js" />
+    <Content Include="app\services\ordersService.js" />
+    <Content Include="app\services\tokensManagerService.js" />
+    <Content Include="app\views\home.html" />
+    <Content Include="app\views\login.html" />
+    <Content Include="app\views\location.html" />
+    <Content Include="app\views\signup.html" />
+    <Content Include="app\views\tokens.html" />
+    <None Include="Properties\PublishProfiles\dgl.pubxml" />
+    <None Include="Properties\PublishProfiles\dle.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\authComplete.js" />
+    <Content Include="scripts\fabric_all.js" />
+    <Content Include="scripts\layout\jquery.grid-a-licious.js" />
+    <Content Include="scripts\layout\jquery.ui.timepicker.js" />
+    <Content Include="scripts\layout\load_image.js" />
+    <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

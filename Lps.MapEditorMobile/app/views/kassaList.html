@@ -1,0 +1,31 @@
+﻿<style>
+    .mediacustom {
+        padding: 4px;
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Ihre Kasse</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+
+            <div class="media" ng-repeat="room in roomsList | orderBy: 'time' : true ">              
+                <div class="media-body">
+                    <div class="pull-left mediacustom">
+                        <a href="#/kassa/{{room.id}}">
+                            <img ng-src="{{imagePath(room.mainPhoto, IMAGE_SIZE.thumb)}}" height="90" width="120" class="media-object">
+                        </a>
+                    </div>
+                    <a href="#/kassa/{{room.id}}">
+                        <h4 ng-bind="room.name"></h4>
+                    </a>
+                    <p class="media-heading" ng-bind="room.name"></p>
+                    <p ng-bind="room.number"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

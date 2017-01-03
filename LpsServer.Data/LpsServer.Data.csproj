@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09A87C17-497D-41F4-9D66-BB7C443909E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LpsServer.Data</RootNamespace>
+    <AssemblyName>LpsServer.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbMappers\BeaconMapper.cs" />
+    <Compile Include="DbMappers\ConversationMapper.cs" />
+    <Compile Include="DbMappers\ConversationMessageMappper.cs" />
+    <Compile Include="DbMappers\KitchenInternationalTypeMapper.cs" />
+    <Compile Include="DbMappers\BookingRoomTableMapper.cs" />
+    <Compile Include="DbMappers\PositionLogMapper.cs" />
+    <Compile Include="DbMappers\UserPhotoMapper.cs" />
+    <Compile Include="DbMappers\SpecializationTypeMapper.cs" />
+    <Compile Include="DbMappers\RatingMapper.cs" />
+    <Compile Include="DbMappers\KitchenMenuTypeMapper.cs" />
+    <Compile Include="DbMappers\KitchenTypeMapper.cs" />
+    <Compile Include="DbMappers\BusinessHoursMapper.cs" />
+    <Compile Include="DbMappers\RoleTypeMapper.cs" />
+    <Compile Include="DbMappers\BookingMapper.cs" />
+    <Compile Include="DbMappers\PhotoMapper.cs" />
+    <Compile Include="DbMappers\KitchenMenuMapper.cs" />
+    <Compile Include="DbMappers\RoomKitchenInternationalMapper.cs" />
+    <Compile Include="DbMappers\SpecializationMapper.cs" />
+    <Compile Include="DbMappers\RoomKitchenMapper.cs" />
+    <Compile Include="DbMappers\FavoritsMapper.cs" />
+    <Compile Include="DbMappers\RoomTableMapper.cs" />
+    <Compile Include="DbMappers\UserRoleMapper.cs" />
+    <Compile Include="DbMappers\UserMapper.cs" />
+    <Compile Include="DbMappers\LoggingMapper.cs" />
+    <Compile Include="DbMappers\PositionMapper.cs" />
+    <Compile Include="DbMappers\RoomMapper.cs" />
+    <Compile Include="EFCommandInterceptor.cs" />
+    <Compile Include="Entities\PositionLog.cs" />
+    <Compile Include="Entities\BeaconInRange.cs" />
+    <Compile Include="Entities\Beacon.cs" />
+    <Compile Include="Entities\Booking.cs" />
+    <Compile Include="Entities\BusinessHours.cs" />
+    <Compile Include="Entities\Conversation.cs" />
+    <Compile Include="Entities\ConversationMessage.cs" />
+    <Compile Include="Entities\Device.cs" />
+    <Compile Include="Entities\BookingRoomTable.cs" />
+    <Compile Include="Entities\KitchenMenuType.cs" />
+    <Compile Include="Entities\KitchenInternationalType.cs" />
+    <Compile Include="Entities\UserPhoto.cs" />
+    <Compile Include="Entities\Specialization.cs" />
+    <Compile Include="Entities\SpecializationType.cs" />
+    <Compile Include="Entities\KitchenType.cs" />
+    <Compile Include="Entities\Logging.cs" />
+    <Compile Include="Entities\KitchenMenu.cs" />
+    <Compile Include="Entities\Photo.cs" />
+    <Compile Include="Entities\Position.cs" />
+    <Compile Include="Entities\Rating.cs" />
+    <Compile Include="Entities\RoleType.cs" />
+    <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\RoomKitchenInternational.cs" />
+    <Compile Include="Entities\RoomKitchen.cs" />
+    <Compile Include="Entities\Favorits.cs" />
+    <Compile Include="Entities\RoomTable.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Migrations\201605272031412_NewScript123.cs" />
+    <Compile Include="Migrations\201605272031412_NewScript123.Designer.cs">
+      <DependentUpon>201605272031412_NewScript123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221345549_AddPositionMigration.cs" />
+    <Compile Include="Migrations\201606221345549_AddPositionMigration.Designer.cs">
+      <DependentUpon>201606221345549_AddPositionMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181411232_NewScript22.cs" />
+    <Compile Include="Migrations\201607181411232_NewScript22.Designer.cs">
+      <DependentUpon>201607181411232_NewScript22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181618224_NewScript33.cs" />
+    <Compile Include="Migrations\201607181618224_NewScript33.Designer.cs">
+      <DependentUpon>201607181618224_NewScript33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\FillDatabase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LpsContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lps.Contracts\Lps.Contracts.csproj">
+      <Project>{5e77270c-39b6-4c99-893a-9f68dfa8b78c}</Project>
+      <Name>Lps.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605272031412_NewScript123.resx">
+      <DependentUpon>201605272031412_NewScript123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221345549_AddPositionMigration.resx">
+      <DependentUpon>201606221345549_AddPositionMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181411232_NewScript22.resx">
+      <DependentUpon>201607181411232_NewScript22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181618224_NewScript33.resx">
+      <DependentUpon>201607181618224_NewScript33.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

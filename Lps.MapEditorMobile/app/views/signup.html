@@ -1,0 +1,45 @@
+﻿<div ui-content-for="title">
+    <span>Signup</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <div class="row">
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+                <div class="col-md-4">
+                    <form class="form-login" role="form">
+                        <h2 class="form-login-heading">Sign up for user</h2>
+                        <input type="text" class="form-control" placeholder="Username" data-ng-model="registration.userName" required>
+                        <input type="text" class="form-control" placeholder="Email" data-ng-model="registration.email" required>
+                        <input type="password" class="form-control" placeholder="Password" data-ng-model="registration.password" required>
+                        <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.confirmPassword" required>
+                        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUp()">Submit</button>
+                        <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                            {{message}}
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form class="form-login" role="form">
+                        <h2 class="form-login-heading">Sign up for bar owner</h2>
+                        <input type="text" class="form-control" placeholder="Username" data-ng-model="registrationBarOwner.userName" required>
+                        <input type="text" class="form-control" placeholder="Company" data-ng-model="registrationBarOwner.company" required>
+                        <input type="text" class="form-control" placeholder="Email" data-ng-model="registrationBarOwner.email" required>
+                        <input type="password" class="form-control" placeholder="Password" data-ng-model="registrationBarOwner.password" required>
+                        <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registrationBarOwner.confirmPassword" required>
+                        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUpRestaurants()">Submit</button>
+                        <div data-ng-hide="messageRestaurants == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                            {{messageRestaurants}}
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

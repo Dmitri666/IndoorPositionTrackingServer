@@ -1,0 +1,23 @@
+{
+  "name": "GloobarApp",
+  "preferGlobal": true,
+  "version": "0.1.0",
+  "description": "Gloobar Front End",
+  "bin": {
+    "package-name": "./bin/package-name"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.gloobar.de/Bonobo.Git.Server/LpsServer.git"
+  },
+  "analyze": false,
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-bower": "^0.0.10",
+    "gulp-concat": "^2.4.2",
+    "gulp-jshint": "^1.9.0"
+
+  }
+}

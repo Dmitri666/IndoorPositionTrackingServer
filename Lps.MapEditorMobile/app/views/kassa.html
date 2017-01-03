@@ -1,0 +1,191 @@
+﻿<style>
+    .redactorheigth {
+        height: 500px;
+    }
+
+    .selected {
+        background-color: darkseagreen;
+    }
+
+    .vis-hidden {
+        /*visibility: hidden;*/
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .table-color {
+        color: black;
+        background-color: black;
+    }
+     .table-color > thead > tr > td, .table-color > tbody > tr > td, .table-color > tfoot > tr > td {
+        /*padding: 26px;*/
+        height: 50px;
+        background-color: #fff;
+        text-align: center;        
+    }
+    .table-color > thead > tr > td:hover, .table-color > tbody > tr > td:hover, .table-color > tfoot > tr > td:hover {
+        background-color: #eee;
+        cursor: pointer;
+    }
+       
+    th.dHead {
+        background-color: #F7F7F7;
+        text-align: center;
+        min-width: 90px;
+        font-weight: bold;
+    }
+  
+    .resptable {
+        overflow-x: scroll;
+        margin-left: 5em;
+        overflow-y: visible;
+    }
+
+    .headcol {
+        position: absolute;
+        width: 5em;
+        left: 0;
+    }
+</style>
+
+<style>
+   .glow-blink-text 
+   {
+        -webkit-animation: glow-blink-text 2s ease infinite;
+        animation: glow-blink-text 2s ease infinite
+   }
+
+    @-webkit-keyframes glow-blink-text 
+    {
+        0% { background-color:blue;}
+        25% { background-color:white; }
+        100% { background-color:blue;}
+    }
+    @keyframes glow-blink-text 
+    {
+        0% { background-color:blue; }
+        25% { background-color:white; }
+        100% { background-color:blue; }
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Kassa: <b ng-bind="location.name"></b> </span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <div class="col-md-7">
+                <div class="row redactorheigth">
+                    <canvas-editor model="editorModel" />
+                </div>
+                <div class="row">
+                    <hr />
+                    <p class="btn-toolbar">
+                        <button id="compareBtn" ng-click="getBookingMap(0)" ng-class="buttonStatus === 0 ? 'btn-primary': 'btn-default'" class="btn">Today</button>
+                        <button id="allBtn" ng-click="getBookingMap(1)" ng-class="buttonStatus === 1 ? 'btn-primary': 'btn-default'" class="btn">Tomorrow</button>
+                    </p>
+
+                    <div class="resptable">
+                        <table class="table-color">
+                            <thead>
+                                <tr>
+                                    <th class="headcol">
+                                        Table
+                                    </th>
+                                    <th class="dHead" ng-repeat="col in bookingMapList.timeStampList | orderBy: 'date'">
+                                        {{ col.date | date:'HH:mm'}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="table in bookingMapList.roomTableJoinKassaDataList | orderBy: '-id'">
+                                    <td class="headcol">
+                                        {{ table.description }}
+                                    </td>
+                                    <td ng-repeat="timeStamp in table.timeStampJoinKassaList | orderBy: 'date'"
+                                        colspan="{{timeStamp.subColumns.length}}"
+                                        ng-style="timeStamp.bookingData === selectedBooking && { 'background-color':'#999' } || timeStamp.subColumns.length && { 'background-color':'#4cd964' }"                                               
+                                        ng-click="bookingKassa(timeStamp, table)">
+                                        <div ng-show="timeStamp.subColumns.length > 0" 
+                                             ng-class="{'glow-blink-text': timeStamp.bookingData.state === 0 }" >
+                                            <p style="margin: 0;">Time: <b ng-bind="timeStamp.date  | date:'HH:mm'"></b> - <b ng-bind="bookingEndTime(timeStamp.date) | date:'HH:mm'"></b></p>
+                                            <p style="margin: 0;">User: <b ng-bind="timeStamp.bookingData.userName"></b></p>
+                                            <p style="margin: 0;">People: <b ng-bind="timeStamp.bookingData.peopleCount"></b></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div ng-class="{'vis-hidden': selectedBooking}">
+                    <reservation-widget selected-tables="editorModel.selectedTables"
+                                        callback-change-parameters="changeParameters(time, date, capacity)"
+                                        callback-booking="setBooking(time, date, capacity)"
+                                        is-kassa="true"></reservation-widget>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Current time is: <b ng-bind="AssignedDate.now() | date:'yyyy-MM-dd HH:mm:ss'"></b></h4>
+                    </div>
+                </div>
+
+                <input type="text" class="form-control" placeholder="Username" ng-model="filters.username" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Incoming booking requests</h4>
+                    </div>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr ng-repeat="booking in requestedBookingList | orderBy: 'createTime' : true | filter : filterBooking | filter : { userName: filters.username } as results"
+                                ng-class="{'selected': booking === selectedBooking, 'glow-blink-text': booking.state === 0 }"                                
+                                ng-click="showBooking(booking)">
+                                <th>
+                                    <p ng-bind="booking.time | date:'yyyy-MM-dd HH:mm'"></p>
+                                    <h6>User: <b ng-bind="booking.userName"></b></h6>
+                                    <h6>People: <b ng-bind="booking.peopleCount"></b></h6>
+                                    <h6>
+                                        Tables:
+                                        <span ng-repeat="table in booking.roomTableDataList">
+                                            <span class="btn btn-success">{{table.description}}</span>&nbsp;
+                                        </span>
+                                    </h6>
+                                </th>
+                                <td ng-switch on="booking.state">
+                                    <div ng-switch-when="0">
+                                        <div class="btn-group btn-toggle">
+                                            <button ng-class="toggleAccepted ? 'btn-primary':'btn-default'" class="btn btn-sm" ng-click="toggleAccepted=true">ON</button>
+                                            <button ng-class="toggleAccepted ? 'btn-default':'btn-primary'" class="btn btn-sm" ng-click="toggleAccepted=false">OFF</button>
+                                        </div>
+                                        <button class="btn btn-md btn-warning" ng-click="updateBooking(booking, toggleAccepted)">
+                                            <i class="fa fa-refresh fa-1x"></i> Senden
+                                        </button>
+                                    </div>
+                                    <div ng-switch-when="1">
+                                        <button class="btn btn-md btn-success"> Genehmigt</button>
+                                    </div>
+                                    <div ng-switch-when="2">
+                                        <button class="btn btn-md btn-success"> Storniert</button>
+                                    </div>
+                                    <div ng-switch-when="3">
+                                        <button class="btn btn-md btn-success"> Cancel</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-if="results.length == 0">
+                                <td><strong>No results found...</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

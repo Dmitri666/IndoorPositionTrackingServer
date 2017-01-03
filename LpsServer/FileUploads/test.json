@@ -1,0 +1,12 @@
+﻿{
+  "data": {
+    "selected_date": "2016-04-20T19:00:00",
+    "selected_capacity": 2,
+    "capacities": [ 1, 2, 3, 4, 5, 6, 7, 8 ],
+    "reservation_allowed_advance": 360,
+    "reservation_restricted_weekdays": [ ],
+    "reservation_restricted_days": [ ],
+    "reservation_allowed_days": [ ]
+  },
+  "error": null
+}

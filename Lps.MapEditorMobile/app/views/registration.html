@@ -1,0 +1,405 @@
+﻿
+<style>
+    .content {
+        position: fixed;
+        top: 158px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        overflow: auto;
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Ihre Restaurant</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+
+            <div class="btn-group justified nav-tabs">
+                <a ng-class="{'active': activeTab == 1}"
+                   ng-click="setTab(1)"                   
+                   ng-disabled="!isFirstRegistartion"
+                   class="btn btn-default"><i class="fa fa-map-marker"></i> Room</a>
+                <a ng-class="{'active': activeTab == 2}"
+                   ng-disabled="!isFirstRegistartion"
+                   ng-click="setTab(2)"
+                   class="btn btn-default"><i class="fa fa-info"></i> Eigenschaften</a>
+                <a ng-class="{'active': activeTab == 3}"
+                   ng-disabled="!isFirstRegistartion"
+                   ng-click="setTab(3)"
+                   class="btn btn-default"><i class="fa fa-calendar"></i> Öffnungszeiten</a>
+            </div>
+            <br />
+            <div class="btn-group justified nav-tabs">
+                <a ng-class="{'active': activeTab == 4}"
+                   ng-disabled="!isFirstRegistartion"
+                   ng-click="setTab(4)"
+                   class="btn btn-default"><i class="fa fa-picture-o"></i> Bilder</a>
+                <a ng-class="{'active': activeTab == 5}"
+                   ng-disabled="!isFirstRegistartion"
+                   ng-click="setTab(5)"
+                   class="btn btn-default"><i class="fa fa-cart-plus"></i> Menu</a>
+                <a ng-class="{'active': activeTab == 6}"                   
+                   ng-click="setTab(6)"
+                   class="btn btn-default"><i class="fa fa-object-group"></i> Info</a>
+            </div>
+
+            <div ng-show="activeTab == 6">
+                <h3 class="page-header">Restaurant info</h3>
+                <div class="form-group form-control-default required">
+                    <label for="title">Restaurant Name</label>
+                    <input type="text" ng-model="registration.name" placeholder="Restaurant Name" class="form-control" id="title" />
+                </div>
+                <div class="form-group form-control-default required">
+                    <label for="description">Straße</label>
+                    <input type="text" ng-model="registration.street" placeholder="Straße" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default required">
+                    <label for="description">Straße Nummer</label>
+                    <input type="text" ng-model="registration.streetNumber" placeholder="Straße Nummer" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default required">
+                    <label for="description">Stadt</label>
+                    <input type="text" ng-model="registration.city" placeholder="Stadt" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default required">
+                    <label for="description">PLZ</label>
+                    <input type="text" ng-model="registration.plz" placeholder="PLZ" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default required">
+                    <label for="description">Phone</label>
+                    <input type="text" ng-model="registration.phone" placeholder="Phone" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default required">
+                    <label for="description">Email</label>
+                    <input type="text" ng-model="registration.email" placeholder="Email" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default">
+                    <label for="description">Website URL</label>
+                    <input type="text" ng-model="registration.homepage" placeholder="Website URL" class="form-control" id="description" />
+                </div>
+                <div class="form-group form-control-default">
+                    <label for="description">Beschreibung</label>
+                    <textarea id="description" ng-model="registration.description" placeholder="Beschreibung" class="form-control" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-default" ng-click="back()"><i class="fa fa-arrow-left fa-fw"></i> Zurück</button>
+                    <button type="submit" class="btn btn-success" ng-click="next(1)">Speichern und Fortfahren</button>
+                </div>
+                <br />
+            </div>
+
+            <div ng-show="activeTab == 2">
+                <h3 class="page-header">Eigenschaften</h3>
+                <specialization-search specialization-type-list="specializationTypeList" selected-types="registration.specializationTypes">
+                </specialization-search>   
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" ng-click="next(3)">Speichern und Fortfahren</button>
+                </div>
+            </div>
+
+            <div ng-show="activeTab == 3">
+                <h3 class="page-header">Öffnungszeiten</h3>
+                <!--<label>
+                    <input type="checkbox" ng-model="registration.isVisibleBusinessHours" value="">
+                    I don't want to enter hours for this location
+                </label>-->
+                <br />
+                <table wt-responsive-table class="table table-hover">
+                    <tr>
+                        <th></th>
+                        <th>Open</th>
+                        <th>Pause Start</th>                        
+                        <th>Pause End</th>
+                        <th>Close</th>
+                        <th></th>                        
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="picker in businessHours | orderBy: 'day'">
+                        <td class="col-md-2"> <label ng-bind="dayOfWeak[picker.day]"></label></td>
+                        <td class="col-md-2">
+                            <div ng-hide="picker.close">
+                                <time-picker ng-model="picker.openTime"></time-picker>
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div ng-hide="picker.close">
+                                <time-picker ng-model="picker.pauseStart"></time-picker>
+                            </div>
+                        </td>                        
+                        <td class="col-md-2">
+                            <div ng-hide="picker.close">
+                                <time-picker ng-model="picker.pauseEnd"></time-picker>
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div ng-hide="picker.close">
+                                <time-picker ng-model="picker.closeTime"></time-picker>
+                            </div>
+                        </td>                        
+                        <td class="col-md-1">
+                            <label>
+                                <input type="checkbox" ng-model="picker.close" value="">
+                                Close
+                            </label>
+                        </td>
+                        <td class="col-md-1"><button type="submit" class="btn btn-success" ng-click="applyToAll(picker)">Für alle anwenden</button></td>
+                    </tr>
+                </table>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" ng-click="next(4)">Speichern und Fortfahren</button>
+                </div>
+            </div>
+
+            <div ng-show="activeTab == 4">
+                <h3 class="page-header">Bilder</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ng-gallery image-list="registration.photos" roomid="registration.id" isadmin="true">
+                        </ng-gallery>
+                    </div>
+                </div>
+                <br />               
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50%">Name</th>
+                            <th ng-show="uploader.isHTML5">Size</th>
+                            <th ng-show="uploader.isHTML5">Progress</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in uploader.queue">
+                            <td><strong>{{ item.file.name }}</strong></td>
+                            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                            <td ng-show="uploader.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                            </td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div>
+                        Progress:
+                        <div class="progress" style="">
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                        </div>
+                    </div>
+                    <label class="btn btn-default btn-file">
+                        Browse
+                        <input type="file" style="display: none;" id="image" nv-file-select="" uploader="uploader" />
+                    </label>                   
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" ng-click="next(5)">Fortfahren</button>
+                </div>
+                <br />
+            </div>
+
+            <div ng-show="activeTab == 5">
+                <h3 class="page-header">Menu: Empfehlungen des Küchenchefs</h3>
+                <table wt-responsive-table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control" ng-model="item.kitchenMenuTypeId">
+                                <option ng-repeat="kitchenMenuType in kitchenMenuTypeList"
+                                        value="{{kitchenMenuType.id}}">
+                                    {{kitchenMenuType.name}}
+                                </option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="form-control" placeholder="Name" ng-model="item.name" /></td>
+                        <td><input type="text" class="form-control" placeholder="Price" ng-model="item.price" /></td>
+                    </tr>
+                </table>
+                <table wt-responsive-table>
+                    <tr>
+                        <th>Состав</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="borderTree">
+                                <div selected-file="selectedFile" tree-view="structure"></div>
+                            </div>
+                        </td>
+                        <td >
+                            <textarea ng-model="item.description"
+                                      placeholder="Beschreibung"
+                                      style="height:100%;width:100%;"
+                                      rows="4"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" ng-click="addItem(item)">Add to list</button>
+                </div>
+                <br />
+                <table wt-responsive-table>
+                    <tr>
+                        <th class="col-md-2"></th>
+                        <th class="col-md-10"></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control" ng-model="filters.type">
+                                <option ng-repeat="kitchenMenuType in kitchenMenuTypeList"
+                                        value="{{kitchenMenuType.name}}">
+                                    {{kitchenMenuType.name}}
+                                </option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="form-control" placeholder="Name" ng-model="filters.name" /></td>
+                    </tr>
+                </table> 
+                <table wt-responsive-table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items | filter: { description:filters.name, kitchenMenuTypeName:filters.type } as results">
+                            <td class="col-md-2">
+                                <span ng-hide="editMode">{{ getKitchenMenuTypeName(item) }}</span>
+                                <select ng-show="editMode" class="form-control" ng-model="item.kitchenMenuTypeId">
+                                    <option ng-repeat="kitchenMenuType in kitchenMenuTypeList"
+                                            ng-selected="item.kitchenMenuTypeId == kitchenMenuType.id"
+                                            value="{{kitchenMenuType.id}}">
+                                        {{kitchenMenuType.name}}
+                                    </option>
+                                </select>
+                            </td>
+                            <td class="col-md-2">
+                                <span ng-hide="editMode">{{item.name}}</span>
+                                <input type="text" class="form-control" placeholder="Name" ng-show="editMode" ng-model="item.name" />
+                            </td>
+                            <td class="col-md-1">
+                                <span ng-hide="editMode">{{item.price}}</span>
+                                <input type="text" class="form-control" placeholder="Price" ng-show="editMode" ng-model="item.price" />
+                            </td>
+                            <td class="col-md-5">
+                                <span ng-hide="editMode">{{item.description}}</span>
+                                <textarea ng-show="editMode" ng-model="item.description"
+                                          class="form-control"
+                                          rows="4"></textarea>
+                            </td>
+                            <td class="col-md-2">
+                                <span> <button type="submit" class="btn btn-default" ng-hide="editMode" ng-click="editMode = true; editItem(item)">Edit</button></span>
+                                <span><input type="button" class="btn btn-default" ng-hide="editMode" value="Delete" ng-click="removeItem($index)" /></span>
+                                <span> <button type="submit" class="btn btn-default" ng-show="editMode" ng-click="editMode = false">Save</button></span>                                
+                            </td>
+                        </tr>
+                        <tr ng-if="results.length == 0">
+                            <td>
+                                <strong>No results found...</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" ng-click="next(6)">Speichern und Fortfahren</button>
+                </div>
+                <br />
+            </div>
+
+            <div ng-show="activeTab == 1">
+                <div class="col-md-12 content">
+                    
+                    <div id="topnavi" style="height: 10%">
+                        <ul>
+                            <li>
+                                <a class="pointer">room shapes</a>
+                                <ol>
+                                    <li><img src="images/shapes/room1.png" ng-click="setRoomShape('0')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room2.png" ng-click="setRoomShape('1')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room3.png" ng-click="setRoomShape('2')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room4.png" ng-click="setRoomShape('3')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room5.png" ng-click="setRoomShape('ROOM(2.45,0,0,0,8,8,8,8,6,6,6,6,0);')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room6.png" ng-click="setRoomShape('ROOM(2.45,0,0,0,8,6,8,6,6,8,6,8,0);')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room7.png" ng-click="setRoomShape('ROOM(2.45,0,4,0,8,8,8,8,0,4,0,4,4);')" draggable="false" /></li>
+                                    <li><img src="images/shapes/room8.png" ng-click="setRoomShape('ROOM(2.45,0,0,0,8,2,8,2,4,6,4,6,8,8,8,8,0);')" draggable="false" /></li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a class="pointer">room elements</a>
+                                <ol>
+                                    <li><img src="images/elements/dot.png" data-item-type="CornerPoint" cnddraggable /></li>
+                                    <li><img src="images/furniture/table.png" data-item-type="Rect" cnddraggable /></li>
+                                    <li><img src="images/elements/circle.png" data-item-type="Ellipse" cnddraggable /></li>
+                                    <li><img src="images/elements/window.png" data-item-type="InnenWand" cnddraggable/></li>
+                                    <li><img src="images/elements/beacon.png" data-item-type="Beacon" cnddraggable /></li>
+
+                                </ol>
+                            </li>
+                            <li>
+                                <a class="pointer">furniture</a>
+                                <ol>
+                                    <li><img src="images/furniture/table1.png" data-item-type="Table1" cnddraggable /></li>
+                                    <li><img src="images/furniture/table2.png" data-item-type="Table2" cnddraggable /></li>
+                                    <li><img src="images/furniture/table3.png" data-item-type="Table3" cnddraggable /></li>
+                                    <li><img src="images/furniture/table4.png" data-item-type="Table4" cnddraggable /></li>
+                                    <li><img src="images/elements/window.png" data-item-type="Test" cnddraggable /></li>
+                                    <li></li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="height: 80%">
+                        <canvas-editor model="editorModel" />
+                    </div>
+                    <div id="bottomnavi" style="height: 10%;">
+                        <i class="fa fa-search-plus " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="zoomIn();"></i>
+                        <i class="fa fa-search-minus " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="zoomOut();"></i>
+                        <i class="fa fa-undo " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="undo2d();"></i>
+                        <i class="fa fa-repeat " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="redo2d();"></i>
+                        <i class="fa fa-paper-plane-o " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="toggleMeasure();"></i>
+                        <i class="fa fa-floppy-o " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="saveRoom()"></i>
+                        <i class="fa fa-trash-o " data-ecc-type="background" data-ng-show="editorModel.selectedElement" ng-click="deleteItem();"></i>
+                        <i data-ecc-type="background"><input type="text" data-ng-show="editorModel.selectedElement" ng-model="editorModel.selectedElement.text" style="color: black !important" /></i>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

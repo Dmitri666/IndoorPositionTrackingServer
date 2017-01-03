@@ -1,0 +1,53 @@
+﻿
+/*loading spinner*/
+.app-content-loading {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+
+.loading-spinner {
+  position: absolute;
+  font-size: 50px;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+/*Bewertungen*/
+.myRating a {
+    width: 25px;
+    height: 25px;
+    float: left;
+    background-color: #eeeeee;
+}
+.myRating .ratingContainer {
+    width: 560px;
+    height: 60px;
+    color: #fff;
+    background-color: #151515;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 10px 10px;
+}
+.myRating ul.rate {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.myRating ul.rate li {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: aqua;
+    margin-right: 2px;
+}
+.myRating ul.rate li.selected {
+    background-color: green;
+}
+.myRating ul.rate li.hovered {
+    background-color: red;
+}

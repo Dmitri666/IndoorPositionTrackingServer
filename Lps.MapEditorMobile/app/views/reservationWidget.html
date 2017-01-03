@@ -1,0 +1,321 @@
+﻿<style>
+    .merchant-detail-reservation-widget {
+        background-color: rgba(28,28,28,0.9);
+        margin-top: -120px;
+        padding: 10px;
+        position: absolute;
+        width: 300px;
+        z-index: 100;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: opacity .35s ease-in;
+    }
+
+        .merchant-detail-reservation-widget .reservation-widget-people, .merchant-detail-reservation-widget .reservation-widget-date, .merchant-detail-reservation-widget .reservation-widget-time, .merchant-detail-reservation-widget .reservation-widget-area, .merchant-detail-reservation-widget .reservation-widget-date-picker {
+            background-color: #454545;
+            color: #fff;
+            margin-bottom: 5px;
+            padding: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+    div.merchant-detail-reservation-widget.ng-isolate-scope .merchant-detail-reservation-widget {
+        background-color: rgba(28,28,28,0.9);
+        margin-top: -120px;
+        padding: 10px;
+        position: absolute;
+        width: 300px;
+        z-index: 100;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: opacity .35s ease-in;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-people .reservation-widget-minus, .merchant-detail-reservation-widget .reservation-widget-date .reservation-widget-minus, .merchant-detail-reservation-widget .reservation-widget-time .reservation-widget-minus, .merchant-detail-reservation-widget .reservation-widget-area .reservation-widget-minus, .merchant-detail-reservation-widget .reservation-widget-date-picker .reservation-widget-minus {
+        cursor: pointer;
+        font-size: 28px;
+        font-weight: 600;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 40px;
+    }
+
+    div.reservation-widget-people .merchant-detail-reservation-widget .reservation-widget-people, .merchant-detail-reservation-widget .reservation-widget-date, .merchant-detail-reservation-widget .reservation-widget-time, .merchant-detail-reservation-widget .reservation-widget-area, .merchant-detail-reservation-widget .reservation-widget-date-picker {
+        background-color: #454545;
+        color: #fff;
+        margin-bottom: 5px;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+    }
+
+    div.merchant-detail-reservation-widget.ng-isolate-scope .merchant-detail-reservation-widget {
+        background-color: rgba(28,28,28,0.9);
+        margin-top: -120px;
+        padding: 10px;
+        position: absolute;
+        width: 300px;
+        z-index: 100;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        transition: opacity .35s ease-in;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-people .reservation-widget-plus, .merchant-detail-reservation-widget .reservation-widget-date .reservation-widget-plus, .merchant-detail-reservation-widget .reservation-widget-time .reservation-widget-plus, .merchant-detail-reservation-widget .reservation-widget-area .reservation-widget-plus, .merchant-detail-reservation-widget .reservation-widget-date-picker .reservation-widget-plus {
+        cursor: pointer;
+        font-size: 28px;
+        font-weight: 600;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40px;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-people, .merchant-detail-reservation-widget .reservation-widget-date, .merchant-detail-reservation-widget .reservation-widget-time, .merchant-detail-reservation-widget .reservation-widget-area, .merchant-detail-reservation-widget .reservation-widget-date-picker {
+        background-color: #454545;
+        color: #fff;
+        margin-bottom: 5px;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+    }
+
+
+    /*-------------------------------*/
+
+    .custom-date-picker {
+        border-bottom: none;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-date-picker table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table {
+        max-width: 100%;
+        background-color: transparent;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    table {
+        display: table;
+        border-collapse: separate;
+        border-spacing: 2px;
+        border-color: grey;
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+
+    .custom-date-picker td {
+        position: relative;
+    }
+
+    .custom-date-picker td, .custom-date-picker th {
+        padding: 1px;
+    }
+
+    .center, .text-center {
+        text-align: center !important;
+    }
+
+    .text-center, .text-center-xs {
+        text-align: center;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    h6, .h6 {
+        font-size: 14px;
+    }
+
+    h4, .h4, h5, .h5, h6, .h6 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+    }
+
+    .custom-date-picker tbody .btn-default:hover, .custom-date-picker tbody .btn-default.active:hover, .custom-date-picker tbody .btn-default:focus, .custom-date-picker tbody .btn-default.active:focus, .custom-date-picker tbody .btn-default:active, .custom-date-picker tbody .btn-default.active:active, .custom-date-picker tbody .btn-default.btn-info, .custom-date-picker tbody .btn-default.active.btn-info {
+        color: #fff;
+        background-color: #ee9b00;
+        border-color: #ee9b00;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-area-list,
+    .merchant-detail-reservation-widget .reservation-widget-time-list {
+        background-color: #454545;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-time-list .time-item {
+        padding: 5px;
+        display: inline-block;
+        position: relative;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-time-list .time-item:hover {
+        color: #ee9b00;
+    }
+
+    .custom-date-picker tbody .btn-default, .custom-date-picker tbody .btn-default.active {
+        background-color: #454545;
+        color: #fff;
+        border-color: #454545;
+    }
+
+    .merchant-detail-reservation-widget .btn {
+        text-transform: none;
+        text-decoration: none;
+    }
+
+    .custom-date-picker .btn-sm, .custom-date-picker .btn-group-sm > .btn {
+        font-family: 'Open Sans',Arial,sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        padding: 4px 9px;
+        line-height: 1.5;
+        border-radius: 0;
+    }
+
+    .custom-date-picker thead .btn-default, .custom-date-picker thead .btn-default:hover {
+        background-color: transparent;
+        border-color: transparent;
+        cursor: default;
+    }
+
+    .merchant-detail-reservation-widget .reservation-widget-date-picker table th * {
+        color: #fff;
+    }
+
+    /*.merchant-detail-reservation-widget .reservation-widget-date:after, .merchant-detail-reservation-widget .open-times:after, .merchant-detail-reservation-widget .open-area:after {
+        content: "\0000a0";
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid white;
+    }*/
+</style>
+
+<div class="merchant-detail-reservation-widget ng-isolate-scope" style="position: static; margin-top: 8px; margin-bottom:8px; width: 100%; opacity: 1;">
+    <div class="reservation-widget-container">
+        <div>
+            <div class="reservation-widget-people">
+                <div data-ec-incrementation="capacity"
+                     data-ec-collection="settings.capacities"
+                     data-ng-model="request.capacity"
+                     class="ng-isolate-scope">
+                    <span class="reservation-widget-minus" data-ng-click="decrement()" data-ng-show="canDecrement()">-</span>
+                    <span data-ng-show="capacity.value === 1" class="ng-hide">1 Person</span>
+                    <span data-ng-show="capacity.value > 1"
+                          data-translate="widget.nb_persons"
+                          data-translate-values="{amount: capacity.value}">{{capacity.value}} Personen</span>
+                    <span class="reservation-widget-plus" data-ng-click="increment()" data-ng-show="canIncrement()">+</span>
+                </div>
+                <div data-ng-hide="request.capacity" class="white-label loader time-loader ng-hide">
+                    <div><i class="fa fa-spinner fa-spin fa-2x fa-fw margin-bottom"></i></div>
+                </div>
+            </div>
+            <div class="reservation-widget-date toggle-trigger ng-binding"
+                 data-ng-click="toggleCalendar()"
+                 data-ng-class="{open: expandCalendar}">
+                {{request.date | date: 'dd.MM.yyyy'}} <i class="fa fa-caret-down"></i>
+                <div data-ng-hide="request.date" class="white-label loader time-loader ng-hide">
+                    <div><i class="fa fa-spinner fa-spin fa-2x fa-fw margin-bottom"></i></div>
+                </div>
+            </div>
+            <div data-ng-show="expandCalendar" class="reservation-widget-date-picker ng-hide">
+                <div class="reservation-widget-date-content custom-date-picker widget-date-picker-box ng-isolate-scope ng-pristine ng-valid-date-disabled ng-valid-date"
+                     data-custom-datepicker
+                     data-ng-model="request.date"
+                     data-show-button-bar="false"
+                     data-show-weeks="false"
+                     data-min-date="minDate"
+                     data-max-date="maxDate"
+                     data-date-disabled="settings.isClosed(date, mode)"
+                     data-starting-day="1"
+                     data-year-range="2"
+                     data-max-mode="day">
+                </div>
+            </div>
+            <div class="reservation-widget-time">
+                <div data-ec-incrementation="time"
+                     data-ec-collection="times"
+                     data-ec-value-field="timestamp"
+                     data-ng-model="request.time"
+                     data-ng-show="request.time && !loadingState"
+                     class="ng-isolate-scope">
+                    <span class="reservation-widget-minus" data-ng-click="decrement()" data-ng-show="canDecrement()">-</span>
+                    <div class="open-times ng-binding" data-ng-click="toggleTimes()">
+                        {{request.time.date | date: 'HH:mm'}}  <i class="fa fa-caret-down"></i>
+                    </div>
+                    <span class="reservation-widget-plus " data-ng-click="increment()" data-ng-show="canIncrement()">+</span>
+                </div>
+                <div data-ng-hide="!loadingState" class="white-label loader time-loader ng-hide">
+                    <div><i class="fa fa-spinner fa-spin fa-2x fa-fw margin-bottom"></i></div>
+                </div>
+                <div class="red ng-hide" data-ng-hide="loadingState || times.length">
+                    Für dieses Datum gibt es leider keine Verfügbarkeit.
+                </div>
+            </div>
+            <div class="reservation-widget-time-list ng-hide"
+                 data-ng-show="times.length && expandTimes">
+                <div>
+                    <div class="time-item ng-binding "
+                         data-ng-repeat="time in times"
+                         data-ng-click="selectTime(time)">
+                        {{time.date | date: 'HH:mm'}}
+                    </div>
+                </div>
+            </div>
+            <div class="reservation-widget-area-list"
+                 data-ng-show="selectedTables.length">
+                <span ng-repeat="table in selectedTables">
+                    <span class="btn btn-success">{{table.description}}</span>&nbsp; &nbsp;
+                </span>
+            </div>
+            <button type="submit"                    
+                    ng-show="isAuthorizedSubmit()"
+                    class="btn btn-primary btn-block"
+                    data-ng-disabled="!request.time || loadingState || selectedTables.length === 0"
+                    ng-click="booking()">
+                Jetzt reservieren
+            </button>
+        </div>
+    </div>
+</div>

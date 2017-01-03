@@ -1,0 +1,72 @@
+﻿
+<div ui-content-for="title">
+    <span>Statistik</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class='section'>
+            <ui-state id='activeTab' default='1'></ui-state>
+            <ul class="nav nav-tabs">
+                <li ui-class="{'active': activeTab == 1}">
+                    <a ui-set="{'activeTab': 1}">Дать рекламу</a>
+                </li>
+                <li ui-class="{'active': activeTab == 2}">
+                    <a ui-set="{'activeTab': 2}">Просмотреть гостей</a>
+                </li>
+                <li ui-class="{'active': activeTab == 3}">
+                    <a ui-set="{'activeTab': 3}">Rating</a>
+                </li>
+            </ul>
+
+            <div ui-if="activeTab == 1">
+                <h3 class="page-header">Tab 1</h3>
+                <div class="list-group text-center">
+                    <div class="list-group-item list-group-item-home">
+                        <h1>
+                            Mobile Angular UI
+                            <small>1.2</small>
+                        </h1>
+                    </div>
+                    <div class="list-group-item list-group-item-home">
+                        <div>
+                            <i class="fa fa-gamepad feature-icon text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="home-heading">Play around a little</h3>
+                            Open the sidebar and start testing features
+                        </div>
+                    </div>
+
+                    <div class="list-group-item list-group-item-home">
+                        <div>
+                            <i class="fa fa-tachometer feature-icon  text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="home-heading">Test responsiveness and speed</h3>
+                            Scroll, tap, navigate, test that everything is smooth
+                        </div>
+                    </div>
+
+                    <div class="list-group-item list-group-item-home">
+                        <div>
+                            <i class="fa fa-expand feature-icon  text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="home-heading">Resize your browser</h3>
+                            Stretch and squeeze your browser window to see both mobile and desktop versions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ui-if="activeTab == 2">
+                <h3 class="page-header">Tab 2</h3>
+                
+            </div>
+            <div ui-if="activeTab == 3">
+                <h3 class="page-header">Tab 3</h3>
+                
+            </div>          
+        </div>
+    </div>
+</div>

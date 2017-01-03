@@ -1,0 +1,59 @@
+﻿
+    <div ui-content-for="title">
+        <span>Room Designe</span>
+    </div>
+
+    <div class="scrollable">
+        <div id="topnavi" style="height:40px;">
+            <ul>
+                <li>
+                    <a class="pointer">room shapes</a>
+                    <ol>
+                        <li><img src="images/shapes/room1.png" ng-click="setRoomShape('0')" draggable="false" /></li>
+                        <li><img src="images/shapes/room2.png" ng-click="setRoomShape('1')" draggable="false" /></li>
+                        <li><img src="images/shapes/room3.png" ng-click="setRoomShape('2')" draggable="false" /></li>
+                        <li><img src="images/shapes/room4.png" ng-click="setRoomShape('3')" draggable="false" /></li>
+                        <li><img src="images/shapes/room5.png" ng-click="setRoomShape('ROOM(2.45,0,0,0,8,8,8,8,6,6,6,6,0);')" draggable="false" /></li>
+                        <li><img src="images/shapes/room6.png" ng-click="setRoomShape('ROOM(2.45,0,0,0,8,6,8,6,6,8,6,8,0);')" draggable="false" /></li>
+                        <li><img src="images/shapes/room7.png" ng-click="setRoomShape('ROOM(2.45,0,4,0,8,8,8,8,0,4,0,4,4);')" draggable="false" /></li>
+                        <li><img src="images/shapes/room8.png" ng-click="setRoomShape('ROOM(2.45,0,0,0,8,2,8,2,4,6,4,6,8,8,8,8,0);')" draggable="false" /></li>
+                    </ol>
+                </li>
+                <li>
+                    <a class="pointer">room elements</a>
+                    <ol>
+                        <li><img src="images/elements/dot.png" data-item-type="CornerPoint" cnddraggable /></li>
+                        <li><img src="images/furniture/table.png" data-item-type="Rect" cnddraggable /></li>
+                        <li><img src="images/elements/circle.png" data-item-type="Ellipse" cnddraggable /></li>
+                        <li><img src="images/elements/window.png" data-item-type="InnenWand" cnddraggable /></li>
+
+                    </ol>
+                </li>
+                <li>
+                    <a class="pointer">furniture</a>
+                    <ol>
+                        <li><img src="images/furniture/table1.png" data-item-type="Table1" cnddraggable /></li>
+                        <li><img src="images/furniture/table2.png" data-item-type="Table2" cnddraggable /></li>
+                        <li><img src="images/furniture/table3.png" data-item-type="Table3" cnddraggable /></li>
+                        <li><img src="images/furniture/table4.png" data-item-type="Table4" cnddraggable /></li>
+                        <li><img src="images/elements/window.png" data-item-type="Test" cnddraggable /></li>
+                        <li></li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+        <div id="bottomnavi" style="height:80%">
+            <canvas-editor model="editorModel" />
+        </div>
+
+        <div id="bottomnavi" style="height:20%;">
+            <i class="fa fa-search-plus " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="zoomIn();"></i>
+            <i class="fa fa-search-minus " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="zoomOut();"></i>
+            <i class="fa fa-undo " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="undo2d();"></i>
+            <i class="fa fa-repeat " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="redo2d();"></i>
+            <i class="fa fa-paper-plane-o " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="toggleMeasure();"></i>
+            <i class="fa fa-floppy-o " data-ecc-type="standart" data-ng-hide="editorModel.selectedElement" ng-click="goToLogin()"></i>
+            <i class="fa fa-trash-o " data-ecc-type="background" data-ng-show="editorModel.selectedElement" ng-click="deleteItem();"></i>
+            <i data-ecc-type="background"><input type="text" data-ng-show="editorModel.selectedElement" ng-model="editorModel.selectedElement.text" style="color: black !important" /></i>
+        </div>
+    </div>

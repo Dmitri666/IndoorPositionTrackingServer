@@ -1,0 +1,51 @@
+{
+  "models":
+  [
+    {
+      "coefficient1": 0.42093,
+      "coefficient2": 6.9476,
+      "coefficient3": 0.54992,
+      "version":"4.4.2",
+      "build_number":"KOT49H",
+      "model":"Nexus 4",
+      "manufacturer":"LGE"
+    },
+    {
+        "coefficient1": 0.42093,
+        "coefficient2": 6.9476,
+        "coefficient3": 0.54992,
+        "version": "4.4.2",
+        "build_number": "LPV79",
+        "model": "Nexus 5",
+        "manufacturer": "LGE"
+    },
+    {
+        "coefficient1": 0.42093,
+        "coefficient2": 9.0,
+        "coefficient3": 0.54992,
+        "version": "5.0.2",
+        "build_number": "LSY66J",
+        "model": "Android SDK built for x86",
+        "manufacturer": "unknown"
+    },
+    {
+        "coefficient1": 0.42093,
+        "coefficient2": 6.9,
+        "coefficient3": 0.54992,
+        "version": "6.0",
+        "build_number": "MASTER",
+        "model": "Android SDK built for x86",
+        "manufacturer": "unknown"
+    },
+    {
+      "coefficient1": 0.42093,
+      "coefficient2": 9.7,
+      "coefficient3": 0.54992,
+      "version":"5.0",
+      "build_number":"LRX21V",
+      "model":"SM-N9005",
+      "manufacturer": "samsung",
+      "default": true
+    }
+  ]
+}

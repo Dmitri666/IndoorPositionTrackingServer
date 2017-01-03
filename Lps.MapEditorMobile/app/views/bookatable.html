@@ -1,0 +1,25 @@
+﻿<style>
+    .redactorheigth {
+        height: 500px;
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Booking</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <div class="col-md-7 redactorheigth">
+                <canvas-editor model="editorModel" />
+            </div>
+            <div class="col-md-5">                
+                <reservation-widget selected-tables="editorModel.selectedTables" 
+                                    callback-change-parameters="changeParameters(time, date, capacity)"
+                                    callback-booking="setBooking(time, date, capacity)"
+                                    is-kassa="false"></reservation-widget>                                        
+            </div>
+        </div>
+    </div>
+</div>

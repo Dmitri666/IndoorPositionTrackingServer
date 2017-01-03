@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E77270C-39B6-4C99-893A-9F68DFA8B78C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lps.Contracts</RootNamespace>
+    <AssemblyName>Lps.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\Help.cs" />
+    <Compile Include="Helper\Role.cs" />
+    <Compile Include="Interfaces\IPositionChangeTracker.cs" />
+    <Compile Include="MapEditorViewModel\ResponseSaveRoom.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Beacons\BeaconInRoom.cs" />
+    <Compile Include="ViewModel\Beacons\BeaconsInRoom.cs" />
+    <Compile Include="ViewModel\Beacons\PositionLogData.cs" />
+    <Compile Include="ViewModel\Booking\BookingData.cs" />
+    <Compile Include="ViewModel\Booking\BookingJoinRoomData.cs" />
+    <Compile Include="ViewModel\Booking\Reservation.cs" />
+    <Compile Include="ViewModel\Booking\BookingMapData.cs" />
+    <Compile Include="ViewModel\Booking\ReservationData.cs" />
+    <Compile Include="ViewModel\Booking\RoomTableJoinKassaData.cs" />
+    <Compile Include="ViewModel\Booking\RoomTableData.cs" />
+    <Compile Include="ViewModel\Booking\TableReservationModelRequest.cs" />
+    <Compile Include="ViewModel\Beacons\BeaconData.cs" />
+    <Compile Include="ViewModel\Booking\BookingResponse.cs" />
+    <Compile Include="ViewModel\Booking\BookingRequest.cs" />
+    <Compile Include="ViewModel\Booking\TableStateEnum.cs" />
+    <Compile Include="ViewModel\Booking\TimeObject.cs" />
+    <Compile Include="ViewModel\Booking\TimeStampJoinKassa.cs" />
+    <Compile Include="ViewModel\Booking\Timestamp.cs" />
+    <Compile Include="ViewModel\Business\BusinessHoursData.cs" />
+    <Compile Include="ViewModel\Chat\Actor.cs" />
+    <Compile Include="ViewModel\Chat\ChatMessage.cs" />
+    <Compile Include="ViewModel\Chat\ConversationsData.cs" />
+    <Compile Include="ViewModel\Chat\DevicePosition.cs" />
+    <Compile Include="ViewModel\Facebook\ExternalLoginModels.cs" />
+    <Compile Include="ViewModel\Files\DeletePhotoBase.cs" />
+    <Compile Include="ViewModel\Files\DeletePhotoFromRoomRequest.cs" />
+    <Compile Include="ViewModel\Files\PhotoData.cs" />
+    <Compile Include="ViewModel\Files\PhotoDataRequest.cs" />
+    <Compile Include="ViewModel\Files\PhotoDataResponse.cs" />
+    <Compile Include="ViewModel\Files\SetMainPhotoBase.cs" />
+    <Compile Include="ViewModel\Files\SetMainPhotoRequest.cs" />
+    <Compile Include="ViewModel\Rooms\KitchenInternationalTypeData.cs" />
+    <Compile Include="ViewModel\RoomPlan\Beacon.cs" />
+    <Compile Include="ViewModel\Rooms\SpecializationTypeData.cs" />
+    <Compile Include="ViewModel\Rooms\KitchenTypeData.cs" />
+    <Compile Include="ViewModel\Kitchen\KitchenMenuData.cs" />
+    <Compile Include="ViewModel\Kitchen\KitchenMenuTypeData.cs" />
+    <Compile Include="ViewModel\Rating\RatingData.cs" />
+    <Compile Include="ViewModel\Rating\ResponseSaveRating.cs" />
+    <Compile Include="ViewModel\ResponseBase.cs" />
+    <Compile Include="ViewModel\Rooms\RoomData.cs" />
+    <Compile Include="ViewModel\Beacons\Measurement.cs" />
+    <Compile Include="ViewModel\Beacons\RangingData.cs" />
+    <Compile Include="ViewModel\Beacons\Region.cs" />
+    <Compile Include="ViewModel\Rooms\RequestLocationData.cs" />
+    <Compile Include="ViewModel\RoomPlan\RoomModel.cs" />
+    <Compile Include="ViewModel\Rooms\RoomInfo.cs" />
+    <Compile Include="ViewModel\RoomPlan\Table.cs" />
+    <Compile Include="ViewModel\Rooms\TypeaheadCityData.cs" />
+    <Compile Include="ViewModel\Rooms\TypeaheadLocationData.cs" />
+    <Compile Include="ViewModel\UserBarOwnerData.cs" />
+    <Compile Include="ViewModel\UserData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

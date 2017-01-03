@@ -1,0 +1,111 @@
+﻿{
+  "data": {
+    "selected_time": {
+      "date": "2016-04-20T15:00:00",
+      "timestamp": 1,
+      "discount": null,
+      "available": true,
+      "areas": [ 2460 ]
+    },
+    "times": [
+      {
+        "name": "EVENING",
+        "times": [
+          {
+            "date": "2016-04-20T15:00:00",
+            "timestamp": 1461164400,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T15:30:00",
+            "timestamp": 1461166200,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T16:00:00",
+            "timestamp": 1461168000,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T16:30:00",
+            "timestamp": 1461169800,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T17:00:00",
+            "timestamp": 1461171600,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T17:30:00",
+            "timestamp": 1461173400,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T18:00:00",
+            "timestamp": 1461175200,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T18:30:00",
+            "timestamp": 1461177000,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T19:00:00",
+            "timestamp": 1461178800,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T19:30:00",
+            "timestamp": 1461180600,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T20:00:00",
+            "timestamp": 1461182400,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T20:30:00",
+            "timestamp": 1461184200,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          },
+          {
+            "date": "2016-04-20T21:00:00",
+            "timestamp": 1461186000,
+            "discount": null,
+            "available": true,
+            "areas": [ 2460 ]
+          }
+        ]
+      }
+    ],
+    "areas": [ ]
+  },
+  "error": null
+} 

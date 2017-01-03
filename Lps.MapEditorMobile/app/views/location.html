@@ -1,0 +1,283 @@
+﻿<style>
+    .slider-size {
+        height: 400px; /* This is your slider height */
+    }
+
+    .carousel {
+        width: 100%;
+        margin: 0 auto; /* center your carousel if other than 100% */
+    }
+
+    .panel {
+        margin-bottom: 1px !important;
+    }
+
+    @media (max-width: 769px) {
+        .myReiter {
+            display: block;
+            visibility: visible;
+        }
+
+        .element-invisible {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        .element-visible {
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        div.list-group > .list-group-item {
+            padding: 8px;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .myReiter {
+            display: none;
+            visibility: hidden;
+            height: 0;
+        }
+
+        .element-visible {
+        }
+
+        .element-invisible {
+        }
+
+        div.list-group > .list-group-item {
+            padding: 15px;
+        }
+    }
+
+    .mediacustom {
+        padding: 4px;
+    }
+</style>
+
+<div ui-content-for="title">
+    <span>Location</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+
+            <h3 class="page-header" ng-bind="location.name"></h3>
+            <p>{{concatFullStreet(location)}}</p>
+
+            <ul class="list-inline">
+                <li><i class="fa fa-fw fa-phone"></i> {{location.phone}}</li>
+            </ul>
+
+            <div class="panel panel-default myReiter">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a class="btn btn-block btn-success" href="#/bookatable/{{id}}">Jetzt reservieren</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a data-ng-hide="!authentication.isAuth"
+                               href=""
+                               class="btn btn-link"
+                               ng-show="!location.isFavorite"
+                               ng-click="addFavorite()">add to favorite</a>
+                            <a href=""
+                               class="btn btn-link"
+                               ng-show="location.isFavorite"
+                               ng-click="deleteFavorite()">delete favorite</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div back-img="{{ imagePath(location.mainPhoto, IMAGE_SIZE.original) }}" class="slider-size">
+                    </div>
+                </div>
+            </div>
+
+            <ul class="list-inline">
+                <li>
+                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                    <span class="fa fa-fw fa-star-o"></span>
+                </li>
+                <li><i class="fa fa-fw fa-heart-o text-pink-500"></i> 35 loved this</li>
+                <li ng-show="location.isFavorite"><span class="fa fa-fw fa-star text-yellow-800"></span> My Favorite</li>
+            </ul>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ng-gallery image-list="location.photos" isadmin="false">
+                            </ng-gallery>
+                        </div>
+                    </div>
+                    <br />
+                    <h4>Beschreibung</h4>
+                    <p ng-bind="location.description"></p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolores nisi possimus temporibus. Aliquam assumenda consequuntur corporis, debitis eum eveniet excepturi fugit inventore iste libero nam nostrum nulla numquam, omnis quibusdam
+                        soluta tenetur velit veritatis. Impedit minus numquam praesentium sapiente! Harum laboriosam qu
+                        am quibusdam recusandae?
+                    </p>
+                    <br />
+                    <h4>Öffnungszeiten</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th ng-repeat="picker in location.businessHours | orderBy: 'day'">
+                                        <label ng-bind="dayOfWeak[picker.day]"></label>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td ng-repeat="picker in location.businessHours | orderBy: 'day'">
+                                        <div ng-bind-html="getFullOpenTime(picker)"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <h4>Menu: Empfehlungen des Küchenchefs</h4>
+                    <table wt-responsive-table>
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control" ng-model="filters.type">
+                                    <option ng-repeat="kitchenMenuType in kitchenMenuTypeList"
+                                            value="{{kitchenMenuType.name}}">
+                                        {{kitchenMenuType.name}}
+                                    </option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="form-control" placeholder="Name" ng-model="filters.name" /></td>                            
+                        </tr>
+                    </table>                    
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="table" ng-repeat="(key, value) in location.kitchenMenus | groupBy: 'kitchenMenuTypeName' ">
+                                <h5><i class="fa fa-2x fa-apple"></i> <strong>{{ key }}</strong></h5>
+                                <div class="row">
+                                    <!--<div ng-repeat="kitchenMenu in value | filter: filters.name as results">-->
+                                    <div ng-repeat="kitchenMenu in value | filter: { description:filters.name, kitchenMenuTypeName:filters.type } as results">
+                                        <div class="col-md-10">
+                                            <strong>{{ kitchenMenu.name }} </strong>{{ kitchenMenu.description }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label style="white-space:nowrap">{{ kitchenMenu.price }}  &euro;</label>
+                                        </div>
+                                    </div>
+                                    <div ng-if="results.length == 0">
+                                        <div class="col-md-10">
+                                            <strong>No results found...</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div ng-show="location.ratings.length > 0">
+                        <h4>Bewertungen</h4>
+                        <div class="panel panel-default"
+                             ng-repeat="rating in location.ratings | orderBy: 'time' : true ">
+                            <div class="panel-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="pull-left mediacustom">
+                                            <img class="media-object" src="http://dummyimage.com/60x60&text=image" alt="people" />
+                                        </div>
+                                        <small class="text-grey-400 pull-right btn btn-md btn-success" ng-bind="rating.state"></small>
+                                        <h5 class="media-heading margin-v-5" ng-bind="rating.userName"></h5>
+                                        <small class="text-grey-400" ng-bind="rating.time"></small>
+                                        <p class="margin-none" ng-bind="rating.description"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a class="btn btn-block btn-success" href="#/bookatable/{{id}}">Jetzt reservieren</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <a data-ng-hide="!authentication.isAuth"
+                                       href=""
+                                       class="btn btn-link"
+                                       ng-show="!location.isFavorite"
+                                       ng-click="addFavorite()">add to favorite</a>
+                                    <a href=""
+                                       class="btn btn-link"
+                                       ng-show="location.isFavorite"
+                                       ng-click="deleteFavorite()">delete favorite</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thumbnail">
+                        <img width="100%" svg-image="location.svgLayout" />
+                    </div>
+                    <div class="panel panel-default"
+                         ng-show="location.kitchenTypes.length > 0">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Spezialisierung</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <span ng-repeat="specializationType in location.specializationTypes">
+                                    <span class="label label-success">{{getKitchenTypeName(specializationTypesList, specializationType)}}</span>&nbsp; &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default"
+                         ng-show="location.kitchenTypes.length > 0">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Stichworte Küchen</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <span ng-repeat="kitchenType in location.kitchenTypes">
+                                    <span class="label label-success">{{getKitchenTypeName(kitchenTypesList, kitchenType)}}</span>&nbsp; &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default"
+                         ng-show="location.kitchenInternationalTypes.length > 0">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Stichworte Küchen International</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <span ng-repeat="kitchenInternationalType in location.kitchenInternationalTypes">
+                                    <span class="label label-info">{{getKitchenTypeName(kitchenInternationalTypesList, kitchenInternationalType)}}</span>&nbsp; &nbsp;
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

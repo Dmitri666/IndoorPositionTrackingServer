@@ -1,0 +1,37 @@
+﻿<style>
+    .mediacustom {
+        padding: 4px;
+    }
+</style>
+
+
+<div ui-content-for="title">
+    <span>Ihre Favorits</span>
+</div>
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <div class="media" ng-repeat="room in favorits | orderBy: 'time' : true ">
+                <div class="media-body">
+                    <div class="pull-left mediacustom">
+                        <a href="#/location/{{room.id}}">
+                            <img ng-src="{{imagePath(room.imageFileName, IMAGE_SIZE.thumb)}}" height="90" width="120" class="media-object">
+                        </a>
+                    </div>
+                    <a href="#/location/{{room.id}}">
+                        <span ng-bind="room.name"></span>
+                    </a>
+                    <p class="media-heading" ng-bind="room.name"></p>
+                    <p ng-bind="room.number"></p>
+                </div>
+                <div class="media-right">
+                    <button class="btn btn-md" ng-click="deleteFavorite(room)"><i class="fa fa-trash-o fa-4x"></i><div>Löschen</div></button>
+                    <!--<div class="btn btn-md">
+                        <i class="fa fa-trash-o fa-4x"></i><div>Löschen</div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
